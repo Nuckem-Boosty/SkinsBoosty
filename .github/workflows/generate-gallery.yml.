@@ -22,7 +22,7 @@ jobs:
           echo "[" > data.json
           find images -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.webp" \) \
             | sort \
-            | sed 's|^||' \
+            | sed 's|^images/||' \
             | awk '{ printf "  {\"file\": \"%s\"},\n", $0 }' >> data.json
           sed -i '$ s/,$//' data.json
           echo "]" >> data.json
@@ -34,4 +34,3 @@ jobs:
           git add data.json
           git commit -m "Auto-update gallery" || echo "No changes to commit"
           git push
-
