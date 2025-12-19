@@ -19,7 +19,7 @@ jobs:
       - name: Generate data.json from /images recursively
         run: |
           echo "[" > data.json
-          find images -type f -name "*.png" | sort | sed 's|^images/||' | awk '{ printf "  {\"file\": \"%s\"},\n", $0 }' >> data.json
+          find images -type f -name "*.png" | sort | sed 's|^||' | awk '{ printf "  {\"file\": \"%s\"},\n", $0 }' >> data.json
           sed -i '$ s/,$//' data.json
           echo "]" >> data.json
 
